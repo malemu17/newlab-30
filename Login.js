@@ -1,28 +1,51 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Provider } from 'react-redux';
-import store from './store';
-import TaskList from './TaskList';
-import Login from './Login';
-import Logout from './Logout';
-import AuthViewer from './AuthViewer';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { attemptLogin } from './store/authReducer';
+import { View, Text, TextInput, Button } from 'react-native';
 import styles from './stylesheet.js';
 
-export default function App() {
-    return (
-        <Provider store={store}>
-            <View style={styles.container}>
-                <AuthViewer reverse={true}>
-                    <Login />
-                </AuthViewer>
+function Login(props) {
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
 
-                <AuthViewer>
-                    <ScrollView style={styles.scrollView}>
-                        <Logout />
-                        <TaskList />
-                    </ScrollView>
-                </AuthViewer>
-            </View>
-        </Provider>
+    const login = () => {
+        props.dispatch(attemptLogin(email, password));
+    };
+
+    // TODO: DELETE WHEN NOT DEVELOPING
+    useEffect(() => {
+        props.dispatch(attemptLogin('sarah@sarah.com', 'sarahpassword'));
+    }, []);
+
+    return (
+        <View>
+            <Text style={styles.header}>Login</Text>
+
+            <Text style={styles.bodyText}>Email:</Text>
+            <TextInput
+                autoCapitalize='none'
+                autoCompleteType='email'
+                keyboardType='email-address'
+                textContentType='emailAddress'
+                autoCorrect={false}
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+            />
+
+            <Text style={styles.bodyText}>Password:</Text>
+            <TextInput
+                autoCorrect={false}
+                textContentType='password'
+                autoCapitalize='none'
+                style={styles.input}
+                value={password}
+                onChangeText={setPassword}
+            />
+
+            <Button title='Submit' onPress={login} />
+        </View>
     );
 }
+
+export default connect()(Login);
