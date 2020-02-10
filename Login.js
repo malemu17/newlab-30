@@ -45,6 +45,7 @@ function Login(props) {
             <TextInput
                 autoCorrect={false}
                 textContentType='password'
+                keyboardType='password'
                 autoCapitalize='none'
                 style={styles.input}
                 value={password}
