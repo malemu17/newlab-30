@@ -4,6 +4,14 @@ import { attemptLogin } from './store/authReducer';
 import { View, Text, TextInput, Button } from 'react-native';
 import styles from './stylesheet.js';
 
+
+/**
+ * login function and props dispatch attemptLogin action 
+ * @param {functions} props 
+ * input form to input email and password , button to submit 
+ * update the store and dispatch action attemptLogin 
+ */
+
 function Login(props) {
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');

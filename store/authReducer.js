@@ -1,5 +1,6 @@
 import { getAllTasks } from './taskReducer';
 import { api } from '../util';
+import { Buffer} from 'buffer';
 
 const initialState = {
     email: 'test@gmail.com',

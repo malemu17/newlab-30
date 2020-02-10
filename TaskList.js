@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import PlatformIndicator from './PlatformIndicator';
 import { View, ScrollView, Text } from 'react-native';
 import Task from './Task';
 import TaskEdit from './TaskEdit';
@@ -52,9 +53,10 @@ function TaskList(props) {
     }
 
     return (
-        <ScrollView>
+        
             <View>
-                <Text>Hello World</Text>
+                <PlatformIndicator />
+                
                 <View>{taskObjects}</View>
                 <View>{edit}</View>
                 <TaskAdd
@@ -63,7 +65,7 @@ function TaskList(props) {
                     }}
                 />
             </View>
-        </ScrollView>
+      
     );
 }
 

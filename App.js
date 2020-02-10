@@ -8,6 +8,15 @@ import Logout from './Logout';
 import AuthViewer from './AuthViewer';
 import styles from './stylesheet.js';
 
+
+/**
+ * @function 
+ * a function show components 
+ * AuthViewer do showing children based of Login 
+ * ( taskList and Logout)
+ * @return   show: Login, Logout, TaskList
+ */
+
 export default function App() {
     return (
         <Provider store={store}>

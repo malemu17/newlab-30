@@ -9,18 +9,7 @@ function TaskEdit(props) {
     let [date, setDate] = useState(dateFix(props.task.date));
     let [isComplete, setIsComplete] = useState(props.task.isComplete);
 
-    /* onSubmit={e => {
-                    e.preventDefault();
-                    props.edit({
-                        id: props.task.id,
-                        name,
-                        description,
-                        priority,
-                        date,
-                        isComplete,
-                    });
-                    props.close();
-                }} */
+
 
     let h1 = {
         fontSize: 60,
@@ -42,10 +31,14 @@ function TaskEdit(props) {
             <TextInput value={description} onChangeText={setDescription} />
 
             <Text style={label}>Priority:</Text>
-            <TextInput value={priority} onChangeText={setPriority} />
+            <TextInput value={priority.toString()} 
+            onChangeText={setPriority} />
 
             <Text style={label}>Date:</Text>
-            <TextInput value={date} onChangeText={setDate} />
+            <TextInput 
+            
+            value={date} 
+            onChangeText={setDate} />
 
             <Text style={label}>Is Complete:</Text>
             <Switch value={isComplete} onChange={setIsComplete} />
